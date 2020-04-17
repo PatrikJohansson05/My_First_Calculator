@@ -4,57 +4,45 @@ public class App {
 
     public static void main(String[] args) {
         boolean on = true;
+        double num1 = 0, num2 = 0; //setting things up
+
         System.out.print("Basic Calculator by Patrik. \n");
         while(on)
         {
             System.out.print("\nPlease choose one of these operations (+,-,/,*), or type stop to end the program. \n");
-            String operation = ScannerUtil.getString();
-            if("+".equals(operation))
-            {
-                System.out.print("Type in the first number. \n");
-                double add1 = ScannerUtil.getDouble();
-                System.out.print("Type the second number. \n");
-                double add2 = ScannerUtil.getDouble();
-                double add3 = add1 + add2;
-                System.out.print(add1 + "+" + add2 + "=" + add3 + "\n");
-            }
-            if("-".equals(operation))
-            {
-                System.out.print("Type in the first number. \n");
-                double sub1 = ScannerUtil.getDouble();
-                System.out.print("Type the second number. \n");
-                double sub2 = ScannerUtil.getDouble();
-                double sub3 = sub1 - sub2;
-                System.out.print(sub1 + "-" + sub2 + "=" + sub3 + "\n");
-            }
-            if("/".equals(operation))
-            {
-                System.out.print("Type in the first number. \n");
-                double div1 = ScannerUtil.getDouble();
-                System.out.print("Type the second number. \n");
-                double div2 = ScannerUtil.getDouble();
-                double div3 = div1 / div2;
-                System.out.print(div1 + "/" + div2 + "=" + div3 + "\n");
-            }
-            if("*".equals(operation))
-            {
-                System.out.print("Type in the first number. \n");
-                double mul1 = ScannerUtil.getDouble();
-                System.out.print("Type the second number. \n");
-                double mul2 = ScannerUtil.getDouble();
-                double mul3 = mul1 * mul2;
-                System.out.print(mul1 + "*" + mul2 + "=" + mul3 + "\n");
-            }
-            if("stop".equals(operation))
-            {
+            String choice = ScannerUtil.getString();
+            if (choice.equals("stop")){
                 on = false;
                 System.out.print("Bye");
+                break;
             }
+
+            System.out.print("Enter the first number. \n");
+            num1 = ScannerUtil.getDouble();
+            System.out.print("Enter the second number. \n");
+            num2 = ScannerUtil.getDouble();
+
+            System.out.print( calculator(choice, num1, num2));
+        }
 
 
 
         }
-
+    public static double calculator(String choice, double num1, double num2){
+        double answer = 0;
+        switch (choice){
+            case "+": // addition
+                answer = num1 + num2;
+                break;
+            case "-": // subtraction
+                answer = num1 - num2;
+                break;
+            case "*": // multiplication
+                answer = num1 * num2;
+                break;
+            case "/": // division
+                answer = num1 / num2;
+                break;
+        }return answer;
     }
-
 }
